@@ -1,97 +1,125 @@
-import React from "react";
-import { Menu, Transition } from "@headlessui/react";
+import React, { useState } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
+
 const data = [
   {
-    name: "home",
+    name: "Home",
     link: "#home",
+    current: true,
   },
 
   {
-    name: "who we are ",
+    name: "Who we are ",
     link: "#who we are",
+    current: false,
   },
-  { name: "services", link: "#services" },
+  { name: "Services", link: "#services", current: false },
   {
-    name: "contact",
+    name: "Contact",
     link: "#contacts",
+    current: false,
   },
   {
-    name: "blog",
+    name: "Blog",
     link: "#blog",
+    current: false,
   },
 ];
 
-const navbar = () => {
+const Navbar = () => {
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
   return (
-    <div>
-      <nav className="bg-red-500">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex justify-between">
-            <div className="flex space-x-4">
-              <div>
-                <a
-                  href="#"
-                  className="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900"
-                >
-                  <img
-                    className="h-10 w-15 mr-1 text-blue-400"
-                    src="https://nacc.or.ke/wp-content/uploads/2015/09/logo.png"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  />
+    <Disclosure as="nav" className="bg-red-700 lg:py-15">
+      {({ open }) => (
+        <>
+          <div className="max-w-7xl mx-auto px-2 py-4 sm:px-6 lg:px-8 ">
+            <div className="relative flex items-center justify-between h-16">
+              <div className="flex ">
+                <div className="flex space-x-4">
+                  <a
+                    href="#"
+                    className="flex items-center  text-gray-700 hover:text-gray-900"
+                  >
+                    <img
+                      className="h-30 w-36 mr-20  text-blue-400"
+                      src="https://nacc.or.ke/wp-content/uploads/2015/09/logo.png"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    />
+                  </a>
+                </div>
 
-                  <span className="font-bold">Maisha network</span>
-                </a>
+                <div className="hidden md:flex items-center lg:space-x-20 md:space-x-5">
+                  {data.map((itms, index) => (
+                    <a
+                      key={index}
+                      href={itms.link}
+                      className={classNames(
+                        itms.current
+                          ? "bg-primary text-red-600 font-bold hover:bg-yellow-200 py-8 px-9  lg:text-xl  md:text-base  "
+                          : "text-primary lg:text-xl md:text-base font-sans hover:bg-yellow-300  transition duration-300",
+                        "px-4 py-3  ml-5 md:px-1"
+                      )}
+                      aria-current={itms.current ? "page" : undefined}
+                    >
+                      {itms.name}
+                    </a>
+                  ))}
+                </div>
               </div>
 
               <div className="hidden md:flex items-center space-x-1">
-                {data.map((itms, index) => (
-                  <a
-                    key={index}
-                    href={itms.link}
-                    className="py-5 px-3 text-gray-700 hover:text-gray-900"
-                  >
-                    {itms.name}
-                  </a>
-                ))}
+                <a href="" className="py-5 px-3">
+                  Login
+                </a>
+                <a
+                  href=""
+                  className="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300"
+                >
+                  Signup
+                </a>
+              </div>
+              <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                {/* Mobile menu button*/}
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <span className="sr-only">Open main menu</span>
+                  {open ? (
+                    <XIcon className="block h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
               </div>
             </div>
-
-            <div className="hidden md:flex items-center space-x-1">
-              <a href="" className="py-5 px-3">
-                Login
-              </a>
-              <a
-                href=""
-                className="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300"
-              >
-                Signup
-              </a>
-            </div>
-            {/* <!-- mobile button goes here --> */}
-
-            <div className="md:hidden flex items-center">
-              <button className="mobile-menu-button"></button>
-            </div>
           </div>
-        </div>
 
-        {/* //mobile menu // */}
-        <div className="mobile-menu hidden md:hidden">
-          {data.map((itms, index) => (
-            <a
-              href={itms.link}
-              key={index}
-              className="block py-2 px-4 text-sm hover:bg-gray-200"
-            >
-              {itms.name}
-            </a>
-          ))}
-        </div>
-      </nav>
-    </div>
+          <Disclosure.Panel className="sm:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {data.map((item, index) => (
+                <a
+                  key={index}
+                  href={item.href}
+                  className={classNames(
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block px-3 py-2 rounded-md text-base font-medium"
+                  )}
+                  aria-current={item.current ? "page" : undefined}
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
   );
 };
 
-export default navbar;
+export default Navbar;
