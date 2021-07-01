@@ -10,7 +10,7 @@ const data = [
   },
 
   {
-    name: "Who we are ",
+    name: "About us ",
     link: "#who we are",
     current: false,
   },
@@ -32,7 +32,7 @@ const Navbar = () => {
     return classes.filter(Boolean).join(" ");
   }
   return (
-    <Disclosure as="nav" className="bg-red-700 lg:py-15">
+    <Disclosure as="nav" className="bg-white lg:py-15">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 py-4 sm:px-6 lg:px-8 ">
@@ -60,13 +60,13 @@ const Navbar = () => {
                       href={itms.link}
                       className={classNames(
                         itms.current
-                          ? "bg-primary text-red-600 font-bold hover:bg-yellow-200 py-8 px-9  lg:text-xl  md:text-base  "
-                          : "text-primary lg:text-xl md:text-base font-sans hover:bg-yellow-300  transition duration-300",
+                          ? "bg-gray-200 text-red-600 font-bold  rounded transition duration-300 hover:bg-red-400 py-2 px-3  lg:text-xl  md:text-base  "
+                          : "text-red-500 lg:text-xl md:text-base font-sans hover:bg-gray-200  transition duration-300",
                         "px-4 py-3  ml-5 md:px-1"
                       )}
                       aria-current={itms.current ? "page" : undefined}
                     >
-                      {itms.name}
+                      {itms.name.toUpperCase()}
                     </a>
                   ))}
                 </div>

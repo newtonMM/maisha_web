@@ -3,6 +3,7 @@ const colors = require("tailwindcss/colors");
 module.exports = {
   purge: [],
   presets: [],
+  important: true,
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
@@ -27,6 +28,7 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       primary: "#FFFF00",
+      bg_app: "",
     },
     spacing: {
       px: "1px",

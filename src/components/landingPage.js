@@ -2,51 +2,56 @@ import React from "react";
 import Slick from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import image1 from "../assets/images/sxedu.jpg";
+import image2 from "../assets/images/hiv.jpg";
 
 const data = [
   {
-    caption: "walk withus in this journey",
+    caption: "walk with us in this journey",
     btn_link:
       "https://cdn.pixabay.com/photo/2020/05/31/11/19/firemen-5242315_960_720.jpg",
     btn_caption: " ask help",
-    imageUrl:
-      "https://cdn.pixabay.com/photo/2020/05/31/11/19/firemen-5242315_960_720.jpg",
+    imageUrl: image2,
   },
   {
     caption: " lets talk sex",
     btn_link:
       "https://cdn.pixabay.com/photo/2020/05/31/11/19/firemen-5242315_960_720.jpg",
     btn_caption: " contact us",
-    imageUrl:
-      "https://cdn.pixabay.com/photo/2021/06/22/16/39/arch-6356637__340.jpg",
+    imageUrl: image1,
   },
 ];
 
-const landingPage = () => {
+const LandingPage = () => {
   const display =
     data &&
     data.map((itms, index) => (
-      <div key={index}>
-        <div className="sm:text-center lg:text-left">
-          <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-            <span className="block xl:inline">{itms.caption}</span>
+      <div
+        key={index}
+        className="flex bg-white mt-10 mx-auto max-w-7xl px-4  lg:h-full sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 "
+      >
+        <div className="flex-grow sm:text-center lg:text-left">
+          <h1 className="text-2xl tracking-tight font-extrabold text-gray-900 sm:text-4xl md:text-5xl">
+            <span className="flex-grow text-red-600 xl:inline">
+              {itms.caption.toLocaleUpperCase()}
+            </span>
           </h1>
-          <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-            <div className="rounded-md shadow">
+          <div className=" flex-grow sm:mt-8 sm:justify-center lg:justify-start">
+            <div className="rounded-md shadow lg:w-48">
               <a
                 href={itms.btn_link}
-                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                className="flex items-center justify-center border border-transparent text-base font-medium rounded-md text-white bg-yellow-300 hover:bg-yellow-300 md:py-4 md:text-lg md:px-10"
               >
-                {itms.btn_caption}
+                {itms.btn_caption.toUpperCase()}
               </a>
             </div>
           </div>
         </div>
-        <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        <div className="flex-grow lg:relative h-1/2 w-2/4">
           <img
-            className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+            className=" sm:h-72 md:h-96 lg:w-auto lg:h-1/2 rounded"
             src={itms.imageUrl}
-            alt=""
+            alt="imag2"
           />
         </div>
       </div>
@@ -54,7 +59,7 @@ const landingPage = () => {
 
   const lowerSettings = {
     autoplay: true,
-    autoplaySpeed: 7000,
+    autoplaySpeed: 4000,
     infinite: true,
     pauseOnHover: true,
     slidesToShow: 1,
@@ -84,12 +89,10 @@ const landingPage = () => {
   };
 
   return (
-    <main>
-      <div>
-        {data && data.length > 0 && <Slick {...lowerSettings}>{display}</Slick>}
-      </div>
+    <main className="lg:h-4/5 shadow-lg">
+      {data && data.length > 0 && <Slick {...lowerSettings}>{display}</Slick>}
     </main>
   );
 };
 
-export default landingPage;
+export default LandingPage;
