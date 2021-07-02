@@ -44,7 +44,7 @@ const AboutUs = () => {
     data.map((itms, index) => (
       <div
         key={index}
-        className="flex-grow max-w-sm rounded overflow-hidden shadow-lg lg:px-10"
+        className="flex-grow max-w-sm rounded overflow-hidden shadow-lg lg:px-10git "
       >
         <p className="lg:text-2xl text-red-600 font-bold ">
           {itms.title.toUpperCase()}
