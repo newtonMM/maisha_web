@@ -6,6 +6,11 @@ module.exports = {
   important: true,
   darkMode: false, // or 'media' or 'class'
   theme: {
+    extend: {
+      backgroundImage: (theme) => ({
+        hero: "url('/src/assets/images/hiv.jpg')",
+      }),
+    },
     screens: {
       sm: "640px",
       md: "768px",

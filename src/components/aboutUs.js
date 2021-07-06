@@ -44,7 +44,7 @@ const AboutUs = () => {
     data.map((itms, index) => (
       <div
         key={index}
-        className="flex-grow max-w-sm rounded overflow-hidden shadow-lg lg:px-10git "
+        className="flex-grow max-w-sm rounded overflow-hidden shadow-lg lg:px-10"
       >
         <p className="lg:text-2xl text-red-600 font-bold ">
           {itms.title.toUpperCase()}
@@ -61,7 +61,7 @@ const AboutUs = () => {
             {itms.content}
           </p>
         </div>
-        <div className="rounded-md shadow lg:w-auto">
+        <div className=" mt-5 mb-2 rounded-md shadow lg:w-auto">
           <a
             href={itms.btn_link}
             className="flex items-center justify-center border border-transparent text-base font-medium rounded-md text-white bg-yellow-300 hover:bg-yellow-300 md:py-4 md:text-lg md:px-10"
@@ -74,7 +74,7 @@ const AboutUs = () => {
 
   return (
     <div className="lg:py-10">
-      <div className="lg:text-center lg:px-5">
+      <div className="lg:text-center lg:px-10">
         <h1 className="text-4xl text-red-600 font-bold tracking-wide uppercase">
           About us
         </h1>

@@ -33,7 +33,7 @@ const LandingPage = () => {
         <div className="flex-grow sm:text-center lg:text-left">
           <h1 className="text-2xl tracking-tight font-extrabold text-gray-900 sm:text-4xl md:text-5xl">
             <span className="flex-grow text-red-600 xl:inline">
-              {itms.caption.toLocaleUpperCase()}
+              {itms.caption.toUpperCase()}
             </span>
           </h1>
           <div className=" flex-grow sm:mt-8 sm:justify-center lg:justify-start">
