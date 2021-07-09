@@ -90,8 +90,7 @@ const AboutUs = () => {
           health care for young people with ease accessibility to information
         </p>
       </div>
-
-      <div className="container mx-auto flex lg:py-10">{cards}</div>
+      <div className="container mx-auto flex  lg:py-10">{cards}</div>
     </div>
   );
 };
